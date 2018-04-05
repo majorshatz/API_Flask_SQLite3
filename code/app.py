@@ -5,7 +5,7 @@ from flask_jwt import JWT, jwt_required
 #using Flask-JWT for authentification
 
 from security import authenticate, identity
-
+from user import UserRegister
 
 #create app
 app=Flask(__name__)
@@ -69,6 +69,9 @@ class ItemList(Resource):
     def get(self):
         return {'item':items}
 #don't have to do route we do second parameter below
+
 api.add_resource(Item, '/item/<string:name>')#will look like http://127.0.0.1:5000/student/Rolf
 api.add_resource(ItemList,'/items')
+api.add_resource(UserRegister, '/register')
+
 app.run(port=5000, debug=True)
